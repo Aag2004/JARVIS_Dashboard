@@ -8,7 +8,7 @@ const TableComponent = () => {
   useEffect(() => {
     const fetchExcelData = async () => {
       try {
-        const response = await fetch('/data.xlsx');
+        const response = await fetch('/jarvis_sample.xlsx');
         const arrayBuffer = await response.arrayBuffer();
 
         const workbook = XLSX.read(arrayBuffer, { type: 'array' });
