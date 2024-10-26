@@ -19,6 +19,7 @@ const UserTable = () => {
               <th className="text-left px-6 py-4 font-medium text-gray-700">Username</th>
               <th className="text-left px-6 py-4 font-medium text-gray-700">Email</th>
               <th className="text-center px-6 py-4 font-medium text-gray-700">IP Address</th>
+              <th className="text-center px-6 py-4 font-medium text-gray-700">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -28,6 +29,9 @@ const UserTable = () => {
                 <td className="px-6 py-4 text-gray-600">{user.username}</td>
                 <td className="px-6 py-4 text-gray-600">{user.email}</td>
                 <td className="px-6 py-4 text-center text-gray-600">{user.ip_address}</td>
+                <td className="px-6 py-4 text-center">
+                  <button className='bg-emerald-700 p-2 rounded-lg hover:bg-emerald-400'>Block</button>
+                </td>
               </tr>
             ))}
           </tbody>
