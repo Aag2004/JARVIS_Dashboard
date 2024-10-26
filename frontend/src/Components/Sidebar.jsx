@@ -1,40 +1,64 @@
-// Sidebar.js
-import React from 'react';
-import { Link } from 'react-router-dom'; // Ensure react-router-dom is installed for routing
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+import { TiThMenu } from "react-icons/ti";
+
+function Sidebar() {
+  // State to manage the sidebar visibility
+  const [isOpen, setIsOpen] = useState(true);
+
+  // Function to toggle the sidebar
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="bg-gray-800 min-h-screen w-64 p-4 shadow-lg"> {/* Fixed width for the sidebar */}
-      <h2 className="text-white text-2xl font-bold mb-6">Dashboard Menu</h2>
-      <ul className="space-y-4">
-        <li>
-          <Link to="/" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Dashboard
-          </Link>
-        </li>
-        <li>
-          <Link to="/users" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Users
-          </Link>
-        </li>
-        <li>
-          <Link to="/sales" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Sales
-          </Link>
-        </li>
-        <li>
-          <Link to="/settings" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Settings
-          </Link>
-        </li>
-        <li>
-          <Link to="/support" className="text-gray-300 hover:text-white transition-colors duration-200">
-            Support
-          </Link>
-        </li>
-      </ul>
+    <div>
+      {/* Toggle button */}
+      <div
+        onClick={toggleSidebar} 
+        className="fixed top-4 left-4 z-50 text-white rounded p-2 transition w-12 cursor-pointer"
+      >
+        <TiThMenu/>
+      </div>
+      
+      {/* Sidebar */}
+      {isOpen && (
+        <div className="fixed left-0 top-0 flex flex-col w-52 h-screen bg-slate-900 text-white shadow-lg pt-12">
+          <nav className="flex-1 p-4">
+            <ul className="space-y-4">
+              <li>
+                <Link to="/" className="block px-4 py-2 hover:bg-gray-700 rounded transition"
+                onClick={toggleSidebar}>
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link to="/userdetails" className="block px-4 py-2 hover:bg-gray-700 rounded transition"onClick={toggleSidebar}>
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link to="/settings" className="block px-4 py-2 hover:bg-gray-700 rounded transition">
+                  Settings
+                </Link>
+              </li>
+              <li>
+                <Link to="/help" className="block px-4 py-2 hover:bg-gray-700 rounded transition">
+                  Help
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="p-4">
+            <button className="w-full bg-blue-800 hover:bg-blue-500 text-white font-bold py-2 rounded transition">
+              Logout
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
+}
 
 export default Sidebar;
